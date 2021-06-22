@@ -2,6 +2,9 @@
 # Auto Weather Reporter Script
 ### Scheduled to run everyday
 
+#### *Python Version*:
+This API runs on Python version 3.6 or above.
+
 #### *Objective*:
 This script automatically checks the predicted barometric pressure everyday.
 
