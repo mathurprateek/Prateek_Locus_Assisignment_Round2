@@ -19,8 +19,8 @@ app = Flask(__name__)  # Flask application
 api = Api(app)  # Flask  RESTful API wrapper
 
 req_param = reqparse.RequestParser()  # retrieve parsed values from request
-req_param.add_argument("lat", type=float, required=True, help="Please enter 'Latitude' value")  # latitude value
-req_param.add_argument("lon", type=float, required=True, help="Please enter 'Longitude' value")  # longitude value
+req_param.add_argument("lat", type=float, required=True, help="Please enter/check 'Latitude' value")  # latitude value
+req_param.add_argument("lon", type=float, required=True, help="Please enter/check 'Longitude' value")  # longitude value
 
 
 # Renders HTML page for user to input values
@@ -62,7 +62,7 @@ class AtmPrs(Resource):
             for k, v in zip(datetime_dict.keys(), unix_datetime_dict.values()):
                 datetime_dict[k] = v  # setting values in human readable dictionary
         except ValueError:
-            return jsonify({"Status Code": 400, "ValueError": "Check the Value of Latitude and Longitude"})
+            return jsonify({"Status Code": 400, "ValueError": "Invalid Latitude and Longitude value"})
         except KeyError as ke:
             return {"Caught an KeyError": ke}
         except Exception as exc:
