@@ -141,25 +141,35 @@ At 4:00 AM, for past 3 days.
 
 }, "timezone": "Asia/Dubai" }
 
-***Response: (400, Bad Request)*** -- If missed to enter value for *Latitude*
+***Response: (400, Bad Request)*** -- If missed to enter value or added incorrect type of *Latitude*
 
 {
 
 "message": {
 
-"lat": "Please enter 'Latitude' value"
+"lat": "Please enter/check 'Latitude' value"
 
 } }
 
-***Response: (400, Bad Request)*** -- If missed to enter value for *Longitude*
+***Response: (400, Bad Request)*** -- If missed to enter value or added incorrect type of *Longitude*
 
 { 
 
 "message": {
 
-"lon": "Please enter 'Longitude' value"
+"lon": "Please enter/check 'Longitude' value"
 
 } }
+
+***Response: (400, Bad Request)*** -- If type is correct but not a real *Latitude* or *Longitude* value.
+
+{
+
+"Status Code": 400,
+
+"ValueError": "Check the Value of Latitude and Longitude"
+
+}
   
 ## Openweathermap API
 
