@@ -66,17 +66,17 @@ as mentioned in the earlier section
 
 4. Create a folder "templates", under root folder.
 
- 4.1 Place HTML file 'index_weather_task1.html' here.
+4.1 Place HTML file 'index_weather_task1.html' here.
 
 5. [Run](https://www.jetbrains.com/help/pycharm/creating-and-running-your-first-python-project.html#run) the API task1_locus.py.
 
- 5.1 API will run on http://127.0.0.3:1111/
+5.1 API will run on http://127.0.0.3:1111/
 
- 5.2 Launch an Internet Browser and hit http://127.0.0.3:1111/ from search bar.
+5.2 Launch an Internet Browser and hit http://127.0.0.3:1111/ from search bar.
 
- 5.3 Enter the value for Latitude and Longitude, click submit.
+5.3 Enter the value for Latitude and Longitude, click submit.
 
-6. Output will be displayed 
+6. Output will be displayed  
 - Past 3 days at 4:00 AM and corresponding Pressure
 - Timezone information
 
@@ -173,7 +173,7 @@ At 4:00 AM, for past 3 days.
 ***Request:***
 
 ```http
-  https://api.openweathermap.org/data/2.5/onecall/timemachine?lat={lat}&lon={lon}&dt={k}&appid={appid}
+  GET https://api.openweathermap.org/data/2.5/onecall/timemachine?lat={lat}&lon={lon}&dt={k}&appid={appid}
 ```
 
 
