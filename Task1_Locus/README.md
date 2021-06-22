@@ -2,6 +2,9 @@
 # Show Atmospheric pressure
 ### At 4am for the past 3 days from the day of running the API
 
+#### *Python Version*:
+This API runs on Python version 3.6 or above.
+
 #### *Objective*:
 Display the atmospheric pressure at 4am for the past 3 days
 as per the timezone of input latitude and longitude.
