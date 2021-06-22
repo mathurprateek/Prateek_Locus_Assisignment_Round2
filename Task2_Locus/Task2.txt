@@ -1,0 +1,22 @@
+Task: Propose a way to automatically check the predicted pressure between 06 AM and 06 PM, if pressure is predicted to fall below 995 Millibar, trigger a mail to the relevant stakeholder.
+I propose to write a Python script to automate this task.
+API to fetch predicted pressure: https://openweathermap.org/api >> "One Call API"
+Service: Hourly forecast for 48 hours.
+> User Input: Latitude and Longitude values while running the script for the first time or while re-starting the script.
+> Identify the timezone as per the Latitude and Longitude values.
+> Calculate the UTC offset and evaluate the Unix DateTime timestamp for 06 am (start) and 06 pm (end).
+> Evaluate the script running time as per the timezone of entered coordinates and server's DateTime on which the script will be deployed.
+> Create a function and schedule the script to run every day morning at 03 AM of the target timezone.
+> Call the Hourly forecast for 48 hours service with requests GET method to fetch the values for 48hours.
+> Intercept the response in JSON format.
+> Check the elements for two conditions:
+    1. Unix timestamp between 06 am and 06 pm of the respective day.
+    2. Value of pressure below 995 Millibar.
+> Store the Unix timestamp and pressure values received as key-value pair in a dictionary for the qualifying criteria.
+> Check the dictionary for any record of value.
+> If no records are found, do nothing.
+> If there are any records in the dictionary.
+> Configure SMTP and SSL in your script to send a secure mail to the stakeholders for the predicted time timestamp and respective low pressure.
+
+Using this approach our internal and external stakeholders will be automatically updated within a short span via the Alert mail for predicted low pressure.
+> Supplied Sketch, Code and README file for the same with the assignment.
