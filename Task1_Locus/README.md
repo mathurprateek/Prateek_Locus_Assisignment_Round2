@@ -55,7 +55,7 @@ Human Readable datetime with corresponding pressure value, along with timezone i
 
 ## Instructions to run the API
 
-#### Using PyCharm tool to create, test and run the API.
+#### Using [PyCharm](https://www.jetbrains.com/pycharm/download/#section=windows) tool to create, test and run the API.
 
 1. [Install Dependencies](https://www.jetbrains.com/help/pycharm/installing-uninstalling-and-upgrading-packages.html#interpreter-settings) in PyCharm,
 as mentioned in the earlier section
