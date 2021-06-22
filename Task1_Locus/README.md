@@ -167,7 +167,7 @@ At 4:00 AM, for past 3 days.
 
 "Status Code": 400,
 
-"ValueError": "Check the Value of Latitude and Longitude"
+"ValueError": "Invalid Latitude or Longitude value"
 
 }
   
