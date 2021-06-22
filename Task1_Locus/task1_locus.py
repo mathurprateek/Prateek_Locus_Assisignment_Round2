@@ -32,8 +32,8 @@ def index():
 # creating class resource, extending flask_restful's Resource for API method execution
 class AtmPrs(Resource):
     def get(self):  # runs when API is called with GET method request
+        arg = req_param.parse_args()  # fetching request parsed values
         try:
-            arg = req_param.parse_args()  # fetching request parsed values
             if (-90 <= arg["lat"] <= 90) and (-180 <= arg["lon"] <= 180):
                 lat, lon = arg["lat"], arg["lon"]  # unpacking latitude and longitude values
             else:
@@ -53,9 +53,7 @@ class AtmPrs(Resource):
                     datetime_dict[str(today_tz_datetime - timedelta(days=i))[0:19]] = ""
                     unix_datetime_dict[int((today_tz_datetime -
                                             timedelta(days=i, seconds=utc_dst_delta)).timestamp())] = ''
-
             last_three_days_unix_time_four_am(tz_datetime)
-
             for k in unix_datetime_dict.keys():  # looping over unix timestamps stored
                 res = requests.get(
                     f'https://api.openweathermap.org/data/2.5/onecall/timemachine?lat={lat}&lon={lon}&dt={k}'
@@ -65,6 +63,8 @@ class AtmPrs(Resource):
                 datetime_dict[k] = v  # setting values in human readable dictionary
         except ValueError:
             return jsonify({"Status Code": 400, "ValueError": "Check the Value of Latitude and Longitude"})
+        except KeyError as ke:
+            return {"Caught an KeyError": ke}
         except Exception as exc:
             return {"Got an Exception": exc}
         return jsonify({"Atmospheric pressure at 4am for the past 3 days": datetime_dict,
