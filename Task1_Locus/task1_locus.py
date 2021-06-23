@@ -75,4 +75,4 @@ api.add_resource(AtmPrs, '/AtmPrs')  # Resource setting and endpoint for this AP
 
 
 if __name__ == "__main__":  # API run/main calling method
-    app.run(debug=True, host="127.0.0.3", port=1111)  # debug True for logging, running API on http://127.0.0.3:1111
+    app.run(debug=True, host="localhost", port=1111)  # debug True for logging, running API on http://localhost:1111
