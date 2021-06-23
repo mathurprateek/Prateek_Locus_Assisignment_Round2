@@ -34,7 +34,7 @@ class AtmPrs(Resource):
     def get(self):  # runs when API is called with GET method request
         arg = req_param.parse_args()  # fetching request parsed values
         try:
-            if (-90 <= arg["lat"] <= 90) and (-180 <= arg["lon"] <= 180):
+            if (-90 <= arg["lat"] <= 90) and (-180 <= arg["lon"] <= 180):  # validating latitude and longitude values
                 lat, lon = arg["lat"], arg["lon"]  # unpacking latitude and longitude values
             else:
                 raise ValueError
