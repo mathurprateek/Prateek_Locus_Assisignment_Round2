@@ -73,9 +73,9 @@ as mentioned in the earlier section
 
 5. [Run](https://www.jetbrains.com/help/pycharm/creating-and-running-your-first-python-project.html#run) the API task1_locus.py.
 
-5.1 API will run on http://127.0.0.3:1111/
+5.1 API will run on http://localhost:1111/
 
-5.2 Launch an Internet Browser and hit http://127.0.0.3:1111/ from search bar.
+5.2 Launch an Internet Browser and hit http://localhost:1111/ from search bar.
 
 5.3 Enter the value for Latitude and Longitude, click submit.
 
@@ -88,7 +88,7 @@ as mentioned in the earlier section
 ## task1_locus API Reference
 
 #### Current Hosting:
-- Host => 127.0.0.3
+- Host => localhost
 - Port => 1111
 
 #### Index Page:
@@ -101,7 +101,7 @@ Once the API is running
   GET /
 ```
 
-Currently configured to run on http://127.0.0.3:1111/.
+Currently configured to run on http://localhost:1111/.
 
 ***Response:***
 - HTML page is rendered for user inputs.
