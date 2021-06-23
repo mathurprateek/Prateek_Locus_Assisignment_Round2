@@ -1,4 +1,3 @@
-
 # Show Atmospheric pressure
 ### At 4am for the past 3 days from the day of running the API
 
@@ -43,7 +42,7 @@ Human Readable datetime with corresponding pressure value, along with timezone i
 2. from **flask** import **Flask, jsonify, render_template**
 => *Micro web framework written in Python*
 
-3. from **Flask-RESTful** import **Api, Resource, reqparse**
+3. from **Flask-RESTful** import **Api, Resource, reqparse, abort**
 => *Flask-RESTful is an extension for Flask that adds support for building REST APIs.*
 
 4. from **datetime** import **datetime** as dt, **timedelta**
@@ -161,13 +160,27 @@ At 4:00 AM, for past 3 days.
 
 } }
 
-***Response: (400, Bad Request)*** -- If type is correct but not a real *Latitude* or *Longitude* value.
+***Response: (404, Not Found)*** -- If type is correct, but both *latitude* and *longitude* values are invalid.
 
 {
 
-"Status Code": 400,
+"message": "Invalid Latitude 140.0 and Longitude 200.0 value entered, valid Latitude range -90 to 90 decimal degrees, valid Longitude range -180 to 180 decimal degrees"
 
-"ValueError": "Invalid Latitude or Longitude value"
+}
+
+***Response: (404, Not Found)*** -- If type is correct, but only *latitude* value is invalid.
+
+{
+
+"message": "Invalid Latitude 1400.0 value entered, valid values range -90 to 90 decimal degrees"\
+
+}
+
+***Response: (404, Not Found)*** -- If type is correct, but only *longitude* value is invalid.
+
+{
+
+"message": "Invalid Latitude 200.0 value entered, valid values range -180 to 180 decimal degrees"
 
 }
   
