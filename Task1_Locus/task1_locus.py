@@ -10,7 +10,7 @@ Output: JSON format data for past 3 day's atmospheric pressure
 
 import requests
 from flask import Flask, jsonify, render_template
-from flask_restful import Api, Resource, reqparse
+from flask_restful import Api, Resource, reqparse, abort
 from datetime import datetime as dt, timedelta
 from timezonefinder import TimezoneFinder
 import pytz
@@ -29,15 +29,30 @@ def index():
     return render_template('index_weather_task1.html')
 
 
+# abort the execution if latitude or longitude values are invalid
+def lat_lon_invalid(lat, lon):
+    # if both latitude or longitude values are invalid
+    if (-90 > lat or 90 < lat) and (-180 > lon or 180 < lon):
+        abort(404, message=f"Invalid Latitude {lat} and Longitude {lon} value entered,"
+                           f" valid Latitude range -90 to 90 decimal degrees,"
+                           f" valid Longitude range -180 to 180 decimal degrees")
+    # if only latitude value is invalid
+    if -90 > lat or 90 < lat:
+        abort(404, message=f"Invalid Latitude {lat} value entered, valid values range -90 to 90 decimal degrees")
+    # if only longitude value is invalid
+    if -180 > lon or 180 < lon:
+        abort(404, message=f"Invalid Latitude {lon} value entered, valid values range -180 to 180 decimal degrees")
+
+
 # creating class resource, extending flask_restful's Resource for API method execution
 class AtmPrs(Resource):
     def get(self):  # runs when API is called with GET method request
         arg = req_param.parse_args()  # fetching request parsed values
+        if (-90 <= arg["lat"] <= 90) and (-180 <= arg["lon"] <= 180):  # validating latitude and longitude values
+            lat, lon = arg["lat"], arg["lon"]
+        else:
+            lat_lon_invalid(arg["lat"], arg["lon"])
         try:
-            if (-90 <= arg["lat"] <= 90) and (-180 <= arg["lon"] <= 180):  # validating latitude and longitude values
-                lat, lon = arg["lat"], arg["lon"]  # unpacking latitude and longitude values
-            else:
-                raise ValueError
             tzf_str = TimezoneFinder().timezone_at(lng=lon, lat=lat)  # identifying timezone as per coordinates passed
             tz = pytz.timezone(tzf_str)  # timezone object for identified timezone
             dt_tz = dt.now(tz)  # current time in target timezone
@@ -61,8 +76,8 @@ class AtmPrs(Resource):
                 unix_datetime_dict[k] = str(res.json()['current']['pressure']) + ' ' + 'Millibar'
             for k, v in zip(datetime_dict.keys(), unix_datetime_dict.values()):
                 datetime_dict[k] = v  # setting values in human readable dictionary
-        except ValueError:
-            return jsonify({"Status Code": 400, "ValueError": "Invalid Latitude and Longitude value"})
+        except ValueError as ve:
+            return {"Caught an Value Error": ve}
         except KeyError as ke:
             return {"Caught an KeyError": ke}
         except Exception as exc:
