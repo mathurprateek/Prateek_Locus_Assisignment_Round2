@@ -43,7 +43,7 @@ Human Readable datetime with corresponding pressure value, along with timezone i
 2. from **flask** import **Flask, jsonify, render_template**
 *Micro web framework written in Python*
 
-3. from **flask_restful** import **Api, Resource, reqparse**
+3. from **Flask-RESTful** import **Api, Resource, reqparse**
 *Flask-RESTful is an extension for Flask that adds support for building REST APIs.*
 
 4. from **datetime** import **datetime** as dt, **timedelta**
