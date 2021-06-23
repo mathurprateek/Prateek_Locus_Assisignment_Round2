@@ -38,22 +38,22 @@ Human Readable datetime with corresponding pressure value, along with timezone i
 #### Python packages/libraries for builing API
 
 1. import **requests**
-*The requests library is the standard for making HTTP requests in Python.*
+=> *The requests library is the standard for making HTTP requests in Python.*
 
 2. from **flask** import **Flask, jsonify, render_template**
-*Micro web framework written in Python*
+=> *Micro web framework written in Python*
 
 3. from **Flask-RESTful** import **Api, Resource, reqparse**
-*Flask-RESTful is an extension for Flask that adds support for building REST APIs.*
+=> *Flask-RESTful is an extension for Flask that adds support for building REST APIs.*
 
 4. from **datetime** import **datetime** as dt, **timedelta**
-*The datetime module supplies classes for manipulating dates and times.*
+=> *The datetime module supplies classes for manipulating dates and times.*
 
 5. from **timezonefinder** import **TimezoneFinder**
-*Fast python package for finding the timezone of any point on earth*
+=> *Fast python package for finding the timezone of any point on earth*
 
 6. import **pytz**
-*This library allows accurate and cross platform timezone calculations using Python 2.4 or higher.*
+=> *This library allows accurate and cross platform timezone calculations using Python 2.4 or higher.*
 
 
 ## Instructions to run the API
